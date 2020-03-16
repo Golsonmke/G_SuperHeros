@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperHero.Data;
 
-namespace SuperHero.Data.Migrations
+namespace SuperHero.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -225,6 +225,9 @@ namespace SuperHero.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AlterEgo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CatchPhrase")
                         .HasColumnType("nvarchar(max)");
