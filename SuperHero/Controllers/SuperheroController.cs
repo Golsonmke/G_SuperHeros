@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperHero.Data;
+using SuperHero.Models;
 
 namespace SuperHero.Controllers
 {
@@ -17,31 +18,34 @@ namespace SuperHero.Controllers
         }
         public ActionResult Index()
         {
-            var superHeroes = _context.SuperHeroes;
-            return View(superHeroes);
+            var superHero = _context.SuperHeroes;
+            return View(superHero);
         }
 
         // GET: Superhero/Details/5
-        public ActionResult Details(int SuperHeroId)
+        public ActionResult Details(int Id)
         {
-            var superHeroId = _context.SuperHeroes;
-            return View();
+             Superhero superHero = _context.SuperHeroes.Find(Id);
+            return View(superHero);
         }
 
         // GET: Superhero/Create
         public ActionResult Create()
         {
-            return View();
+            Superhero superhero = new Superhero();
+            return View(superhero);
         }
 
         // POST: Superhero/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Superhero superhero)
         {
             try
             {
-                // TODO: Add insert logic here
+                
+                _context.SuperHeroes.Add(superhero);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -54,18 +58,25 @@ namespace SuperHero.Controllers
         // GET: Superhero/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Superhero superhero = _context.SuperHeroes.Find(id);
+            return View(superhero);
         }
 
         // POST: Superhero/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Superhero superhero)
         {
             try
             {
-                // TODO: Add update logic here
-
+                Superhero superheroEdit = _context.SuperHeroes.Find(id);
+                _context.SuperHeroes.UpdateRange(superheroEdit);
+                superheroEdit.Name = superhero.Name;
+                superheroEdit.AlterEgo = superhero.AlterEgo;
+                superheroEdit.SuperPower = superhero.SuperPower;
+                superheroEdit.SecondarySuperPower = superhero.SecondarySuperPower;
+                superheroEdit.CatchPhrase = superhero.CatchPhrase;
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -77,17 +88,19 @@ namespace SuperHero.Controllers
         // GET: Superhero/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Superhero superhero = _context.SuperHeroes.Find(id);
+            return View(superhero);
         }
 
         // POST: Superhero/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Superhero superhero)
         {
             try
             {
-                // TODO: Add delete logic here
+                Superhero superheroDelete = _context.SuperHeroes.Find(id);
+                superheroDelete.Name
 
                 return RedirectToAction(nameof(Index));
             }
