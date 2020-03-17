@@ -69,8 +69,7 @@ namespace SuperHero.Controllers
         {
             try
             {
-                Superhero superheroEdit = _context.SuperHeroes.Find(id);
-                _context.SuperHeroes.UpdateRange(superheroEdit);
+                Superhero superheroEdit = _context.SuperHeroes.Find(id);             
                 superheroEdit.Name = superhero.Name;
                 superheroEdit.AlterEgo = superhero.AlterEgo;
                 superheroEdit.SuperPower = superhero.SuperPower;

@@ -6,6 +6,9 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+.body-index{
+    background-image:url("img.spawn-scarey.jpg")
+}
 
 /* Provide sufficient contrast against white background */
 a {

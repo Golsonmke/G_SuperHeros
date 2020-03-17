@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Bootswatch v4.4.1
  * Homepage: https://bootswatch.com
  * Copyright 2012-2020 Thomas Park
@@ -50,8 +50,9 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-
+.body-index{
+    background-image:url(img.spawn.jfif)
+}
 
 html {
     font-family: sans-serif;
