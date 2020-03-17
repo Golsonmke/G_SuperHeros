@@ -100,7 +100,8 @@ namespace SuperHero.Controllers
             try
             {
                 Superhero superheroDelete = _context.SuperHeroes.Find(id);
-                superheroDelete.Name
+                _context.SuperHeroes.Remove(superheroDelete);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
